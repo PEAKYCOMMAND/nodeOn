@@ -19,14 +19,33 @@ function showExists(table, colunm, parameter) {
   return { text, params: [parameter] };
 }
 
-function updateNotes(id, name, email, password) {
-  const text = `UPDATE notes SET
-      name=$2,
-      updated_at= NOW(),
-      email=$3,
-      password=$4
-      WHERE id=$1`;
-  return { text, params: [id, name, email, password] };
+function deleteNote(table, id) {
+  const text = `DELETE FROM ${table} WHERE id=$1`;
+  return { text, params: [id] };
 }
 
-export { insertNotes, insertLinks, insertTags, showExists, updateNotes };
+function querySearch(table, user_id, like, orderBy) {
+  const text = `SELECT * FROM ${table} WHERE user_id=$1 AND LOWER(title) LIKE '%${like}%' OR LOWER(description) LIKE '%${like}%' ORDER BY ${orderBy}`;
+  return { text, params: [user_id] };
+}
+
+function searchWhereIn(table, vector) {
+  const vectorFilter = [];
+  const filter = (value, indice) => vectorFilter.push(`$${indice + 1}`);
+  vector.forEach(filter);
+  const params = `(${vectorFilter.toString()})`;
+
+  const text = `SELECT * FROM (${table}  INNER JOIN notes ON ${table}.note_id = notes.id) WHERE name IN ${params}  `;
+
+  return { text, params: [...vector] };
+}
+
+export {
+  insertNotes,
+  insertLinks,
+  insertTags,
+  showExists,
+  querySearch,
+  searchWhereIn,
+  deleteNote,
+};
