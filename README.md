@@ -14,7 +14,7 @@ body
 	"email": "netxl@gmail.com",
 	"new_email": "testerses@gmail.com",
 	"password": "level81",
-	"new_password": "nextlevelweek"
+	"new_password": "teste123"
 }
 ```
 
