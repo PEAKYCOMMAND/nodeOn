@@ -65,3 +65,5 @@ DELETE
 /api/v1/notes/{note_id}
 ```
 
+Tags
+FIXXME
