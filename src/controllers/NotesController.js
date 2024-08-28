@@ -114,7 +114,7 @@ class NotesController {
 
       // Fazer uma solução que remove repetidos de um vetor
       // fazer uma função drop() e uma push() pegando o vector.length  diminuindo 1
-      //  e comparando, se for igual ao primeiro drop(), se for diferente, push()
+      //  e comparando, se for igual ao primeiro: drop(), se for diferente, push()
       // ...
       return response
         .status(200)
