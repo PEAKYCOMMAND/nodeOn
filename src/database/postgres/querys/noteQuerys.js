@@ -29,13 +29,13 @@ function querySearch(table, user_id, like, orderBy) {
   return { text, params: [user_id] };
 }
 
-function searchWhereIn(table, vector) {
+function searchWhereIn(table, vector, user_id) {
   const vectorFilter = [];
   const filter = (value, indice) => vectorFilter.push(`$${indice + 1}`);
   vector.forEach(filter);
   const params = `(${vectorFilter.toString()})`;
 
-  const text = `SELECT * FROM (${table}  INNER JOIN notes ON ${table}.note_id = notes.id) WHERE name IN ${params}  `;
+  const text = `SELECT * FROM (${table}  INNER JOIN notes ON ${table}.note_id = notes.id)  WHERE name IN ${params}  `;
 
   return { text, params: [...vector] };
 }
