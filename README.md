@@ -10,10 +10,10 @@ Example:
 body 
 ```
 {
-	"name": "hi there",
-	"email": "netx2level122@gmail.com",
+	"name": "hi",
+	"email": "netxl@gmail.com",
 	"new_email": "testerses@gmail.com",
-	"password": "nextlevel81",
+	"password": "level81",
 	"new_password": "nextlevelweek"
 }
 ```
@@ -26,8 +26,8 @@ body
 ```
 {
 	"name": "hi there",
-	"email": "netx2level122@gmail.com",
-	"password": "nextlevel81",
+	"email": "neve122@gmail.com",
+	"password": "level81",
 }
 ```
 
